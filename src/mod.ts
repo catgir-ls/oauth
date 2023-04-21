@@ -18,3 +18,4 @@ class Auth {
 
 export { Auth, OAUTH2 };
 export * from "@src/middleware";
+export * from "@src/auth";
