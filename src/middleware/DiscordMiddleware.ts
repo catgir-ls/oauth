@@ -36,7 +36,7 @@ const DiscordMiddleware: Handler = async ({
       return res.status(400).json({
         status: 400,
         message: "Please ensure you've provided a valid scope!",
-        data: {}
+        data: { }
       });
 
     req.discord = {

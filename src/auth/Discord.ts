@@ -27,8 +27,6 @@ class Discord extends OAUTH2 {
       code
     });
 
-    console.log(response);
-
     if(response.error)
       throw new DiscordError(response.error);
 
