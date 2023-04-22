@@ -3,7 +3,7 @@
  */
 
 // Types
-import { DiscordExchange, type RequestEvent } from "@src/types";
+import { DiscordExchange, type RequestEvent } from "./src/types/mod.ts";
 
 declare global {
   interface Request extends RequestEvent {

@@ -3,10 +3,10 @@
  */
 
 // Auth
-import { Discord } from "@src/auth";
+import { Discord } from "../auth/mod.ts";
 
 // Errors
-import { DiscordError } from "@src/errors";
+import { DiscordError } from "../errors/mod.ts";
 
 // Types
 import {

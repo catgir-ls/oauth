@@ -5,13 +5,13 @@
  */
 
 // Depednencies
-import { Auth, OAUTH2 } from "@src";
+import { Auth, OAUTH2 } from "../mod.ts";
 
 // Errors
-import { DiscordError } from "@src/errors";
+import { DiscordError } from "../errors/mod.ts";
 
 // Types
-import { DiscordExchange } from "@src/types";
+import { DiscordExchange } from "../types/mod.ts";
 
 // Constants
 const BASE_URL = "https://discord.com/api/v10";
@@ -55,7 +55,7 @@ class Discord extends OAUTH2 {
   public static connect = async (access_token: string, data: Record<string, any>) => {
     const { client_id } = Auth.get("discord")!;
     
-    const response = await fetch(`https://discord.com/api/v10/users/@me/applications/${client_id}/role-connection`, {
+    const response = await fetch(`${BASE_URL}/users/@me/applications/${client_id}/role-connection`, {
       method: "PUT",
       headers: {
         "Authorization": `Bearer ${access_token}`,

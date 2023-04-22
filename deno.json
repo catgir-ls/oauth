@@ -1,6 +1,4 @@
 {
-  "importMap": "import_map.json",
-
   "compilerOptions": {
     "types": [ "./types.d.ts" ]
   }

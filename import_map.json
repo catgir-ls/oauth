@@ -1,9 +1,0 @@
-{
-  "imports": {
-    "@src": "./src/mod.ts",
-    "@src/types": "./src/types/mod.ts",
-    "@src/errors": "./src/errors/mod.ts",
-    "@src/auth": "./src/auth/mod.ts",
-    "@src/middleware": "./src/middleware/mod.ts"
-  }
-}
