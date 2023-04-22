@@ -13,7 +13,7 @@ import {
   type Handler,
   type RequestEvent,
   type NextFunction
-} from "@src/types";
+} from "../types/mod.ts";
 
 const DiscordMiddleware: Handler = async ({
   response: res,
