@@ -28,4 +28,4 @@ export type DiscordConfig = {
 }
 
 // External Types
-export type { RequestEvent, Handler, NextFunction } from "https://deno.land/x/nhttp@1.1.9/mod.ts";
+export type { RequestEvent, Handler, NextFunction } from "https://deno.land/x/nhttp@1.2.11/mod.ts";

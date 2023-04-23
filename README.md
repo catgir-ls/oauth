@@ -1,16 +1,19 @@
 <div align="center">
     <h1><img src="https://i.imgur.com/eId0hE3.png" width="300px"><br />oauth</h1>
-    <p>OAUTH middleware's for nhttp written in TypeScript</p>
+    <p>OAUTH middlewares for nhttp written in TypeScript</p>
 </div>
 
 > ### Example ✨
 ```ts
+import { NHttp } from "https://deno.land/x/nhttp@1.2.11/mod.ts";
+import { Controller, Get, Post, Wares } from "https://deno.land/x/nhttp@1.2.11/lib/controller.ts";
 
-import { NHttp } from "https://deno.land/x/nhttp@1.1.18/mod.ts";
-import { BaseController, Controller, Get, addControllers, Wares } from "https://deno.land/x/nhttp_controller@0.7.0/mod.ts";
-
-import { Auth, DiscordMiddleware } from "@src";
-import { type RequestEvent } from "@src/types";
+import {
+  Auth,
+  DiscordMiddleware
+  
+  type RequestEvent
+} from "./src/mod.ts";
 
 Auth.init({
   discord: {
@@ -20,10 +23,10 @@ Auth.init({
   }
 });
 
-@Controller("/")
-class RootController extends BaseController {
+@Controller("/oauth")
+class OAUTHController {
   @Wares(DiscordMiddleware)
-  @Get("/oauth/discord")
+  @Get("/discord")
   get_index({ response: res, request: req }: RequestEvent) {
     return res.status(200).json({
       data: req.discord
@@ -35,12 +38,13 @@ class Application extends NHttp {
   constructor() {
     super();
 
-    this.use(addControllers([ RootController ]));
+    this.use("/", [
+      new OAUTHController()
+    ]);
   }
 }
 
 new Application().listen(3000);
-```
 ```
 > ### Contributing ✨
 #### If you'd like to contribute, feel free to open a PR
