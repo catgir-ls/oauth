@@ -19,4 +19,6 @@ class Auth {
 export { Auth, OAUTH2 };
 
 export * from "./middleware/mod.ts";
+export * from "./auth/mod.ts";
+export * from "./errors/mod.ts";
 export * from "./types/mod.ts";

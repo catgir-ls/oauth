@@ -4,8 +4,14 @@
 
 // Interfaces
 export interface Tokens {
-  access_token?: string,
-  refresh_token?: string
+  access_token: string,
+  refresh_token: string
+}
+
+export interface BaseConfig {
+  client_id: string,
+  client_secret: string,
+  redirect_uri: string
 }
 
 export interface DiscordExchange extends Tokens {
@@ -16,15 +22,31 @@ export interface DiscordExchange extends Tokens {
   scopes: string[], // We convert scope -> scopes in `Discord.exchange()` 
 }
 
-// Types
-export type Config = {
-  discord?: DiscordConfig
+export interface TwitchExchange extends Tokens {
+  error?: string,
+  scopes: string[]
 }
 
-export type DiscordConfig = {
-  client_id: string,
-  client_secret: string,
-  redirect_uri: string
+export interface DiscordConfig extends BaseConfig { }
+export interface TwitchConfig extends BaseConfig { }
+
+// Types
+export type Config = {
+  discord?: DiscordConfig,
+  twitch?: TwitchConfig
+}
+
+export type TwitchUser = {
+  id: number,
+  login: string,
+  display_name: string,
+  type: string,
+  broadcaster_type: string,
+  description: string,
+  profile_image_url: string,
+  offline_image_url: string,
+  view_count: number,
+  created_at: string
 }
 
 // External Types

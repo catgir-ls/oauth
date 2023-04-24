@@ -4,5 +4,6 @@
 
 // Middleware
 import DiscordMiddleware from "./DiscordMiddleware.ts";
+import TwitchMiddleware from "./TwitchMiddleware.ts";
 
-export { DiscordMiddleware };
+export { DiscordMiddleware, TwitchMiddleware };

@@ -12,3 +12,4 @@ const GenericError = (name: string) => class extends Error {
 }
 
 export const DiscordError = GenericError("DiscordError");
+export const TwitchError = GenericError("TwitchError");

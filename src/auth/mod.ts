@@ -4,5 +4,6 @@
 
 // Auth
 import Discord from "./Discord.ts";
+import Twitch from "./Twitch.ts";
 
-export { Discord };
+export { Discord, Twitch };
