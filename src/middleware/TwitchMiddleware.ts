@@ -20,12 +20,12 @@ const TwitchMiddleware: Handler = async ({
   request: req,
   query
 }: RequestEvent, next: NextFunction) => {
-  const { code } = query;
+  const { code, state } = query;
 
-  if(!code)
+  if(!code || !state)
     return res.status(400).json({
       status: 400,
-      message: "Please provide the \"code\" parameter!",
+      message: "Please provide the \"code\" & \"state\" parameters!",
       data: { }
     });
 
@@ -35,7 +35,8 @@ const TwitchMiddleware: Handler = async ({
     req.twitch = {
       access_token,
       refresh_token,
-      scopes: scopes || [ ]
+      scopes: scopes || [ ],
+      state
     };
 
     next();

@@ -20,11 +20,13 @@ export interface DiscordExchange extends Tokens {
   scope?: string,
   expires_in?: number,
   scopes: string[], // We convert scope -> scopes in `Discord.exchange()` 
+  state: string
 }
 
 export interface TwitchExchange extends Tokens {
   error?: string,
-  scopes: string[]
+  scopes: string[],
+  state: string
 }
 
 export interface DiscordConfig extends BaseConfig { }
