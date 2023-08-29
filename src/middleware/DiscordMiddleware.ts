@@ -54,11 +54,7 @@ const DiscordMiddleware: Handler = async ({
         data: { }
       });
 
-    return res.status(500).json({
-      status: 500,
-      message: "Internal Server Error",
-      data: { }
-    })
+    throw e;
   }
 }
 
