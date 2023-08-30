@@ -36,7 +36,7 @@ class Discord extends OAUTH2 {
       throw new DiscordError("Unable to exchange - please try again later!");
 
     const _scopes = response.scope!.split(" ");
-    
+
     if(!scopes.every((scope: string) => _scopes.indexOf(scope) !== -1))
       throw new DiscordError("Please ensure you've provided a valid scope!")
 
@@ -55,6 +55,19 @@ class Discord extends OAUTH2 {
       throw new DiscordError(body.message);
 
     return body;
+  }
+
+  public static join = async (access_token: string, token: string, guild_id: string, user_id: string): Promise<boolean> => {
+    const response = await fetch(`${BASE_URL}/guilds/${guild_id}/members/${user_id}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bot ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ access_token })
+    });
+
+    return [ 201, 204 ].indexOf(response.status) !== -1;
   }
 
   public static connect = async (access_token: string, data: Record<string, any>) => {
