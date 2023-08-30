@@ -1,6 +1,14 @@
 <div align="center">
-    <h1><img src="https://i.imgur.com/eId0hE3.png" width="300px"><br />oauth</h1>
-    <p>OAUTH middlewares for nhttp written in TypeScript</p>
+    <h1>
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/sxR2H0t.png">
+        <source media="(prefers-color-scheme: light)" srcset="https://i.imgur.com/jTBbQKX.png">
+        <img alt="logo" src="https://i.imgur.com/sxR2H0t.png" width="300px">
+      </picture>
+      <br />
+      oauth
+    </h1>
+    <p>🔐 OAUTH middlewares for nhttp written in TypeScript</p>
 </div>
 
 > ### Example ✨
