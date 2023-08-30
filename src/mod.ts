@@ -6,7 +6,7 @@
 import OAUTH2 from "./OAUTH2.ts";
 
 // Types
-import { type Config } from "./types/mod.ts";
+import type { Config } from "./types/mod.ts";
 
 // Auth Class
 class Auth {

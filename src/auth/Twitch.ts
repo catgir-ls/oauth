@@ -18,9 +18,11 @@ const API_BASE_URL = "https://api.twitch.tv";
 // Twitch Class
 class Twitch extends OAUTH2 {
   public static exchange = async (code: string): Promise<TwitchExchange> => {
+    const { client_id, client_secret, redirect_uri, scopes } = Auth.get("twitch")!;
+
     const response = <TwitchExchange>await this._exchange(`${OAUTH_BASE_URL}/oauth2/token`, {
-      ...Auth.get("twitch"),
       grant_type: "authorization_code",
+      client_id, client_secret, redirect_uri,
       code
     });
 
@@ -29,6 +31,11 @@ class Twitch extends OAUTH2 {
 
     if(!response.access_token || !response.refresh_token)
       throw new TwitchError("Unable to exchange - please try again later!");
+
+    const _scopes = response.scopes;
+
+    if(!scopes.every((scope: string) => _scopes.indexOf(scope) !== -1))
+      throw new TwitchError("Please ensure you've provided a valid scope!")
 
     return response;
   }

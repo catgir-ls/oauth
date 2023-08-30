@@ -32,13 +32,6 @@ const DiscordMiddleware: Handler = async ({
   try {
     const { access_token, refresh_token, scopes } = await Discord.exchange(code);
 
-    if(!scopes.includes("identify") || !scopes.includes("role_connections.write"))
-      return res.status(400).json({
-        status: 400,
-        message: "Please ensure you've provided a valid scope!",
-        data: { }
-      });
-
     req.discord = {
       access_token,
       refresh_token,

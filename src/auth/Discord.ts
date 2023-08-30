@@ -21,9 +21,11 @@ class Discord extends OAUTH2 {
   public static exchange = async (
     code: string
   ): Promise<DiscordExchange> => {
+    const { client_id, client_secret, redirect_uri, scopes } = Auth.get("discord")!;
+
     const response = <DiscordExchange>await this._exchange(`${BASE_URL}/oauth2/token`, {
-      ...Auth.get("discord"),
       grant_type: "authorization_code",
+      client_id, client_secret, redirect_uri,
       code
     });
 
@@ -33,9 +35,14 @@ class Discord extends OAUTH2 {
     if(!response.access_token || !response.refresh_token)
       throw new DiscordError("Unable to exchange - please try again later!");
 
+    const _scopes = response.scope!.split(" ");
+    
+    if(!scopes.every((scope: string) => _scopes.indexOf(scope) !== -1))
+      throw new DiscordError("Please ensure you've provided a valid scope!")
+
     return {
       ...response,
-      scopes: response.scope!.split(" ")
+      scopes: _scopes
     };
   }
 

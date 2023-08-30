@@ -11,7 +11,8 @@ export interface Tokens {
 export interface BaseConfig {
   client_id: string,
   client_secret: string,
-  redirect_uri: string
+  redirect_uri: string,
+  scopes: string[]
 }
 
 export interface DiscordExchange extends Tokens {
