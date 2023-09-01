@@ -40,7 +40,7 @@ export type Config = {
 }
 
 export type TwitchUser = {
-  id: number,
+  id: string,
   login: string,
   display_name: string,
   type: string,
